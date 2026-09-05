@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 470" width="920" height="470" role="img" aria-label="Pipeline diagram: a coding session is captured by munshi, archived by patwari, and read back by qanungo, which mirrors the archive and derives everything at read time.">
+  <title>daftar pipeline: session to munshi to patwari to qanungo</title>
+  <style>
+    .box   { fill: #6b7280; fill-opacity: 0.06; stroke: #6b7280; stroke-width: 1; }
+    .plain { fill: none; stroke: #6b7280; stroke-width: 1; }
+    .ttl   { font-family: ui-sans-serif, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; font-weight: 680; fill: #5b636f; }
+    .lbl   { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 10.5px; fill: #6b7280; }
+    .sub   { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 9.5px; fill: #7f8794; }
+    .flow  { stroke: #6b7280; stroke-width: 1.2; fill: none; }
+    .cyan  { fill: #1596ab; }  .cyan-s  { stroke: #1596ab; }
+    .purp  { fill: #8b5cf6; }  .purp-s  { stroke: #8b5cf6; }
+    .amber { fill: #b8860b; }  .amber-s { stroke: #b8860b; }
+    @media (prefers-color-scheme: dark) {
+      .box   { fill: #9ca3af; fill-opacity: 0.10; stroke: #8b929e; }
+      .plain { stroke: #8b929e; }
+      .ttl   { fill: #c3c9d1; }
+      .lbl   { fill: #aeb4bd; }
+      .sub   { fill: #9199a3; }
+      .flow  { stroke: #8b929e; }
+      .cyan  { fill: #3fc2d6; }  .cyan-s  { stroke: #3fc2d6; }
+      .purp  { fill: #a78bfa; }  .purp-s  { stroke: #a78bfa; }
+      .amber { fill: #d9a441; }  .amber-s { stroke: #d9a441; }
+    }
+  </style>
+
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#6b7280"/>
+    </marker>
+    <marker id="arA" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#b8860b"/>
+    </marker>
+  </defs>
+
+  <!-- capture path, top band -->
+  <rect class="box" x="18" y="78" width="104" height="60" rx="10"/>
+  <text class="ttl" x="70" y="103" text-anchor="middle" font-size="12">session</text>
+  <text class="sub" x="70" y="120" text-anchor="middle">claude·copilot·codex</text>
+
+  <rect class="plain cyan-s" x="150" y="78" width="104" height="60" rx="10" stroke-width="1.4"/>
+  <text class="ttl cyan" x="202" y="103" text-anchor="middle" font-size="12">munshi</text>
+  <text class="sub" x="202" y="120" text-anchor="middle">capture·normalize</text>
+
+  <rect class="plain purp-s" x="282" y="78" width="118" height="60" rx="10" stroke-width="1.4"/>
+  <text class="ttl purp" x="341" y="103" text-anchor="middle" font-size="12">patwari</text>
+  <text class="sub" x="341" y="120" text-anchor="middle">permanent archive</text>
+
+  <line class="flow" x1="122" y1="108" x2="146" y2="108" marker-end="url(#ar)"/>
+  <line class="flow" x1="254" y1="108" x2="278" y2="108" marker-end="url(#ar)"/>
+  <text class="lbl" x="209" y="52" text-anchor="middle" font-size="10">capture path — one machine each, no server on the dev box</text>
+
+  <!-- shared read contract -->
+  <rect class="box cyan-s" x="150" y="176" width="250" height="52" rx="10" stroke-width="1.4"/>
+  <text class="ttl cyan" x="275" y="199" text-anchor="middle" font-size="12.5">munshi-transcript</text>
+  <text class="sub" x="275" y="216" text-anchor="middle">shared read contract · typed events</text>
+  <line class="flow" x1="341" y1="138" x2="320" y2="172" marker-end="url(#ar)"/>
+
+  <!-- qanungo box -->
+  <rect class="plain amber-s" x="150" y="258" width="620" height="150" rx="14" stroke-width="1.7"/>
+  <text class="ttl amber" x="172" y="284" font-size="15">qanungo</text>
+  <text class="sub" x="238" y="284" font-size="10.5">read-side client (munshi ADR 0012) · disposable mirror, re-derivable (munshi ADR 0011)</text>
+
+  <rect class="box" x="168" y="300" width="108" height="86" rx="8"/>
+  <text class="lbl" x="222" y="330" text-anchor="middle">mirror +</text>
+  <text class="lbl" x="222" y="346" text-anchor="middle">in-memory service</text>
+  <text class="sub" x="222" y="366" text-anchor="middle">pre-folded views</text>
+
+  <rect class="box" x="288" y="300" width="108" height="86" rx="8"/>
+  <text class="lbl" x="342" y="340" text-anchor="middle">derive metrics</text>
+  <text class="sub" x="342" y="358" text-anchor="middle">read-time fold</text>
+
+  <rect class="box" x="408" y="300" width="108" height="86" rx="8"/>
+  <text class="lbl" x="462" y="340" text-anchor="middle">rule engine</text>
+  <text class="sub" x="462" y="358" text-anchor="middle">8 hardcoded rules</text>
+
+  <rect class="box" x="528" y="300" width="108" height="86" rx="8"/>
+  <text class="lbl" x="582" y="340" text-anchor="middle">score + trends</text>
+  <text class="sub" x="582" y="358" text-anchor="middle">5 lanes</text>
+
+  <rect class="box amber-s" x="648" y="300" width="104" height="86" rx="8"/>
+  <text class="lbl amber" x="700" y="340" text-anchor="middle">dashboard</text>
+  <text class="sub" x="700" y="358" text-anchor="middle">private net · JSON+SSE</text>
+
+  <!-- internal flow arrows -->
+  <line class="flow" x1="276" y1="343" x2="286" y2="343" marker-end="url(#ar)"/>
+  <line class="flow" x1="396" y1="343" x2="406" y2="343" marker-end="url(#ar)"/>
+  <line class="flow" x1="516" y1="343" x2="526" y2="343" marker-end="url(#ar)"/>
+  <line class="flow" x1="636" y1="343" x2="646" y2="343" marker-end="url(#ar)"/>
+  <line class="flow amber-s" x1="275" y1="228" x2="275" y2="296" marker-end="url(#arA)"/>
+
+  <!-- optional notes sink + reader -->
+  <rect class="box" x="430" y="176" width="150" height="52" rx="10"/>
+  <text class="ttl" x="505" y="199" text-anchor="middle" font-size="12">notes sink</text>
+  <text class="sub" x="505" y="216" text-anchor="middle">optional · curated prose out</text>
+
+  <rect class="box" x="798" y="316" width="104" height="54" rx="10"/>
+  <text class="ttl" x="850" y="339" text-anchor="middle" font-size="11.5">any browser</text>
+  <text class="sub" x="850" y="356" text-anchor="middle">laptop·phone·tv</text>
+  <line class="flow amber-s" x1="752" y1="343" x2="794" y2="343" marker-end="url(#arA)"/>
+
+  <!-- evidence link back to patwari -->
+  <path class="flow" d="M341 138 C 341 250, 640 250, 690 296" stroke-dasharray="4 4" marker-end="url(#ar)"/>
+  <text class="sub" x="560" y="252" text-anchor="middle">evidence is a content hash → redeem it in your own shell</text>
+</svg>
