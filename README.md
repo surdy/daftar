@@ -159,9 +159,10 @@ now closed end to end.
 
 ## Skills
 
-Each tool ships thin, read-only Claude Code skills that call the commands for you and read the
-output with you. They are often a friendlier first contact than the CLI: `/coach` will explain a
-score, where `qanungo report` only prints one.
+Each tool ships thin Claude Code skills, five of them read-only, that call the commands for you and
+read the output with you. The two that do write files write only your own repo's instruction or
+skill files, never the archive, and always show the change first. They are often a friendlier first
+contact than the CLI: `/coach` will explain a score, where `qanungo report` only prints one.
 
 | Skill | Repo | Say something like | Wraps | Writes files? |
 | --- | --- | --- | --- | --- |
@@ -224,10 +225,10 @@ qanungo dashboard --bind 192.0.2.10:8878        # a private-network address, una
 | --- | --- | --- |
 | **Beginner** — I want my sessions archived | [munshi `docs/getting-started.md`](https://github.com/surdy/munshi/blob/main/docs/getting-started.md) | [munshi `docs/summarizers.md`](https://github.com/surdy/munshi/blob/main/docs/summarizers.md) · [munshi `docs/user-guide.md`](https://github.com/surdy/munshi/blob/main/docs/user-guide.md) · [munshi `docs/troubleshooting.md`](https://github.com/surdy/munshi/blob/main/docs/troubleshooting.md) |
 | **Beginner** — I want the coaching | [qanungo README → Install](https://github.com/surdy/qanungo#install) | the `/coach`, `/standup` and `/ask` skills in [qanungo `contrib/skills/`](https://github.com/surdy/qanungo/tree/main/contrib/skills) |
-| **Operator** — I run the archive | [patwari `docs/self-hosting.md`](https://github.com/surdy/patwari/blob/main/docs/self-hosting.md) | [patwari README → Deployment, backup, and recovery](https://github.com/surdy/patwari#deployment-backup-and-recovery) · [→ Integrity verification](https://github.com/surdy/patwari#integrity-verification) |
+| **Operator** — I run the archive | [patwari `docs/self-hosting.md`](https://github.com/surdy/patwari/blob/main/docs/self-hosting.md) | [patwari `docs/api.md` → Command-line interface](https://github.com/surdy/patwari/blob/main/docs/api.md#command-line-interface) (backup, verify, restore) · [→ Configuration](https://github.com/surdy/patwari/blob/main/docs/api.md#configuration) · [→ Integrity verification](https://github.com/surdy/patwari/blob/main/docs/api.md#integrity-verification) |
 | **Operator** — I run capture on several machines | [munshi `docs/user-guide.md`](https://github.com/surdy/munshi/blob/main/docs/user-guide.md) | [munshi `docs/configuration.md`](https://github.com/surdy/munshi/blob/main/docs/configuration.md) · [munshi `docs/dashboard.md`](https://github.com/surdy/munshi/blob/main/docs/dashboard.md) · [munshi `docs/gui.md`](https://github.com/surdy/munshi/blob/main/docs/gui.md) |
 | **Power user** — how does capture actually work | [munshi `docs/automatic-archive.md`](https://github.com/surdy/munshi/blob/main/docs/automatic-archive.md) | [munshi `docs/harness-adapters.md`](https://github.com/surdy/munshi/blob/main/docs/harness-adapters.md) · [munshi `docs/manual-archive.md`](https://github.com/surdy/munshi/blob/main/docs/manual-archive.md) |
-| **Power user** — what is in the archive, and how do I read it | [patwari README → Domain model](https://github.com/surdy/patwari#domain-model) | [→ Multi-artifact manifest v1](https://github.com/surdy/patwari#multi-artifact-manifest-v1) · [→ API v1](https://github.com/surdy/patwari#api-v1) · [patwari `CONTEXT.md`](https://github.com/surdy/patwari/blob/main/CONTEXT.md) |
+| **Power user** — what is in the archive, and how do I read it | [patwari `CONTEXT.md`](https://github.com/surdy/patwari/blob/main/CONTEXT.md), then [`docs/domain.md` → Domain model](https://github.com/surdy/patwari/blob/main/docs/domain.md#domain-model) | [patwari `docs/api.md` → API v1](https://github.com/surdy/patwari/blob/main/docs/api.md#api-v1) · [→ Multi-artifact manifest v1](https://github.com/surdy/patwari/blob/main/docs/api.md#multi-artifact-manifest-v1) · [`docs/domain.md` → Retrieval and analysis access](https://github.com/surdy/patwari/blob/main/docs/domain.md#retrieval-and-analysis-access) |
 | **Power user** — what do the scores and rules mean | [qanungo README](https://github.com/surdy/qanungo#readme) | [qanungo `docs/pricing-sources-2026-08-23.md`](https://github.com/surdy/qanungo/blob/main/docs/pricing-sources-2026-08-23.md) · the redaction-pattern notes in [qanungo `docs/`](https://github.com/surdy/qanungo/tree/main/docs) |
 | **Contributor** — why is it built this way | [munshi `docs/adr/`](https://github.com/surdy/munshi/tree/main/docs/adr) (14 ADRs) | [patwari `docs/adr/`](https://github.com/surdy/patwari/tree/main/docs/adr) (6) · [qanungo `docs/adr/`](https://github.com/surdy/qanungo/tree/main/docs/adr) (1) · [munshi `docs/design.md`](https://github.com/surdy/munshi/blob/main/docs/design.md) · [munshi `CONTEXT.md`](https://github.com/surdy/munshi/blob/main/CONTEXT.md) |
 
@@ -252,7 +253,7 @@ All three tools are actively developed and in daily use. Dates below are 2026-09
 | Tool | State | Details |
 | --- | --- | --- |
 | **munshi** | Automatic capture, summarization, resumed-session revision, interrupted-session recovery, per-project budgets, chunked marathon summarization, `tick` on a platform timer, and all three opt-in remote sinks are implemented and tested | [Status](https://github.com/surdy/munshi#status) |
-| **patwari** | v1 is complete: multi-artifact snapshots, resumable chunked upload, integrity scanning, and online `backup create` / `verify` / `restore` | [Delivery roadmap](https://github.com/surdy/patwari#delivery-roadmap) · [v1 completion definition](https://github.com/surdy/patwari#v1-completion-definition) |
+| **patwari** | Phases 0–5 shipped — multi-artifact snapshots, resumable chunked upload, integrity scanning, and online `backup create` / `verify` / `restore`; phase 6 (analysis-tool support) is partly shipped, and the known gaps are stated rather than promised | [Status](https://github.com/surdy/patwari#status) · [Delivery roadmap](https://github.com/surdy/patwari/blob/main/docs/domain.md#delivery-roadmap) |
 | **qanungo** | Shipped: the coaching report and five scored practice lanes, cost, standup, the dashboard, `ask`, the instructions doctor, the skill & agent finder, the redaction layer, and six skills. A rule DSL was considered and **declined** | [Status](https://github.com/surdy/qanungo#status) |
 
 Governance lives in each repo: every tool keeps its own ADRs, and there is no suite-wide ADR
