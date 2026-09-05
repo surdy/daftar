@@ -203,8 +203,12 @@ install both at once. Build with `./contrib/build-gui.sh`; bundles land in
 [munshi `docs/gui.md`](https://github.com/surdy/munshi/blob/main/docs/gui.md).
 
 **The qanungo dashboard** — the coaching view over the *whole* archive, every machine and every
-harness: five score cards with trend arrows, the findings under them, a timeline, an hour-of-week
-heatmap, the quarter's bill, the week's narrative, an ask box, and a provenance footer. Loopback
+harness: a pipeline-health panel (which devices are reporting, sessions landing per day, gaps, the
+archive's own totals from patwari's `/api/v1/stats`), five score cards with trend arrows and a line
+under each saying what moves it, the findings with every rule key linked to the catalogue served at
+`/rules`, a timeline, an hour-of-week heatmap, the quarter's bill, the week's narrative, an ask box,
+and a provenance footer. Scope and window (7, 30 or 90 days) switch without a fetch: every
+combination is pre-folded on the server each refresh. Loopback
 by default; `--bind` it to a private-network address to read it from a phone or a TV, and it
 prints one line saying that nothing authenticates a caller.
 
@@ -253,7 +257,7 @@ All three tools are actively developed and in daily use. Dates below are 2026-09
 | Tool | State | Details |
 | --- | --- | --- |
 | **munshi** | Automatic capture, summarization, resumed-session revision, interrupted-session recovery, per-project budgets, chunked marathon summarization, `tick` on a platform timer, and all three opt-in remote sinks are implemented and tested | [Status](https://github.com/surdy/munshi#status) |
-| **patwari** | Phases 0–5 shipped — multi-artifact snapshots, resumable chunked upload, integrity scanning, and online `backup create` / `verify` / `restore`; phase 6 (analysis-tool support) is partly shipped, and the known gaps are stated rather than promised | [Status](https://github.com/surdy/patwari#status) · [Delivery roadmap](https://github.com/surdy/patwari/blob/main/docs/domain.md#delivery-roadmap) |
+| **patwari** | Phases 0–5 shipped — multi-artifact snapshots, resumable chunked upload, integrity scanning, online `backup create` / `verify` / `restore`, and read-only inventory at `/api/v1/stats` and `/api/v1/clients`; phase 6 (analysis-tool support) is partly shipped, and the known gaps are stated rather than promised | [Status](https://github.com/surdy/patwari#status) · [Delivery roadmap](https://github.com/surdy/patwari/blob/main/docs/domain.md#delivery-roadmap) |
 | **qanungo** | Shipped: the coaching report and five scored practice lanes, cost, standup, the dashboard, `ask`, the instructions doctor, the skill & agent finder, the redaction layer, and six skills. A rule DSL was considered and **declined** | [Status](https://github.com/surdy/qanungo#status) |
 
 Governance lives in each repo: every tool keeps its own ADRs, and there is no suite-wide ADR
