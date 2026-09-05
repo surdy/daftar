@@ -194,7 +194,6 @@ cargo build --release -p munshi-dashboard && ./target/release/munshi-dashboard  
 ```
 
 ![munshi-dashboard](docs/img/munshi-dashboard.png)
-<!-- screenshot pending -->
 
 **The munshi desktop app** — the same ground in a native window, plus a searchable session list
 and per-session actions, and it ships the `munshi` command line inside its own bundle so you can
@@ -214,10 +213,10 @@ qanungo dashboard --bind 192.0.2.10:8878        # a private-network address, una
 ```
 
 ![qanungo-dashboard](docs/img/qanungo-dashboard.png)
-<!-- screenshot pending -->
+
+*`qanungo report` output, synthetic data:*
 
 ![qanungo report](docs/img/qanungo-report.png)
-<!-- screenshot pending -->
 
 ## Which doc do I open
 
